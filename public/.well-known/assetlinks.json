@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.jamma.coffeelounge",
+      "sha256_cert_fingerprints": [
+        "90:80:9C:4A:08:69:A1:C7:9D:47:E9:4E:E1:C6:FF:9A:AD:B4:59:4D:AC:83:4C:68:B1:17:E3:89:B5:45:0E:26"
+      ]
+    }
+  }
+]
