@@ -29,7 +29,7 @@ import {
 import { useRecoilState, useRecoilValue } from "recoil";
 
 import { Branches } from "../constants";
-import { DeliveryOptionType } from "../types";
+import { DeliveryOptionType } from "@/types/delivery.types";
 import { LocationDescription } from "../utils";
 import { memo } from "react";
 import { phpString } from "../phpString";

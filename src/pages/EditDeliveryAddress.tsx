@@ -34,7 +34,7 @@ import {
 
 import { DeleteAddressModal } from "./DeliveryAddresses";
 import DeliveryAddressMap from "../components/DeliveryAddressMap";
-import { DeliveryAddressType } from "../types";
+import { DeliveryAddressType } from "@/types/user.types";
 import { FirebaseError } from "firebase/app";
 import { LocationDescription } from "../utils";
 import { deliveryAddressAtom } from "../atoms/deliveryAddress";

@@ -1,17 +1,3 @@
-import {
-  Additive,
-  Additives,
-  CartItemType,
-  Ice,
-  Milk,
-  Milks,
-  ProductConfig,
-  ProductType,
-  Size,
-  Sizes,
-  Syrup,
-  Syrups,
-} from "../types";
 import { collection, getFirestore } from "firebase/firestore";
 import { useEffect, useState } from "react";
 
@@ -20,6 +6,10 @@ import { cartAtom } from "../atoms/cart";
 import { useCollectionOnce } from "react-firebase-hooks/firestore";
 import { useIonToast } from "@ionic/react";
 import { useRecoilState } from "recoil";
+import { Size, Milk, Syrup } from "@/enums";
+import { CartItemType } from "@/types/cart.types";
+import { ProductConfig } from "@/types/order.types";
+import { Sizes, Milks, Syrups, Additives } from "@/types/product.types";
 
 export const computeProductPrice = (
   basePrice: number,

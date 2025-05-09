@@ -1,6 +1,4 @@
 import "./Product.css";
-
-import { Additive, Ice, Milk, ProductConfig, Size, Syrup } from "../types";
 import {
   IonBackButton,
   IonBadge,
@@ -44,6 +42,8 @@ import { useDocumentDataOnce } from "react-firebase-hooks/firestore";
 import useFavorite from "../hooks/favorite";
 import { useParams } from "react-router";
 import { useRecoilValue } from "recoil";
+import { Size, Milk, Syrup, Ice, Additive } from "@/enums";
+import { ProductConfig } from "@/types/order.types";
 
 function ProductPage() {
   const db = getFirestore();

@@ -8,7 +8,8 @@ import {
   IonRow,
   IonText,
 } from "@ionic/react";
-import { OrderType, PaymentStatusType, ProductType } from "../../types";
+import { OrderType } from "@/types/cart.types";
+import { PaymentStatusType } from "@/types/payment.types";
 
 import AnimatedImg from "../../components/AnimatedImg";
 import { chevronForwardOutline } from "ionicons/icons";

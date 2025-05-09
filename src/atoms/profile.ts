@@ -1,4 +1,4 @@
-import { Avatar } from "coffee-lounge-types";
+import { Avatar } from "@/types/avatar.types";
 import { SystemAvatars } from "../constants";
 import { atom } from "recoil";
 

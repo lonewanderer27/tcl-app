@@ -1,4 +1,4 @@
-import { DeliveryAddressType } from "../types";
+import { DeliveryAddressType } from "@/types/user.types";
 import { atom } from "recoil";
 
 // only serves as the initial value for the delivery address

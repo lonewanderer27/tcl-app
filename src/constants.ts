@@ -6,10 +6,10 @@ import {
   VoucherType,
 } from "./types";
 
-import { Avatar } from "coffee-lounge-types";
+import { Avatar } from "./types/avatar.types";
 import Man from "../src/assets/avatars/man.png"
 import ManAlt from "../src/assets/avatars/man_alt.png"
-import { SystemAvatarNames } from "coffee-lounge-types";
+import { SystemAvatarNames } from "./types/avatar.types";
 import Woman from "../src/assets/avatars/woman.png"
 import WomanAlt from "../src/assets/avatars/woman_alt.png"
 

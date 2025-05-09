@@ -54,7 +54,7 @@ import {
 } from "ionicons/icons";
 
 import { DeliveryAddressConvert } from "../converters/user";
-import { DeliveryAddressType } from "../types";
+import { DeliveryAddressType } from "@/types/user.types";
 import { FirebaseError } from "firebase/app";
 import { LocationDescription } from "../utils";
 import { deliverAddressChoiceAtom } from "../atoms/checkout";

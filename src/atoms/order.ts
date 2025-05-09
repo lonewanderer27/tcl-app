@@ -1,4 +1,4 @@
-import { OrderType } from "../types";
+import { OrderType } from "@/types/cart.types";
 import { atom } from "recoil";
 
 export const orderAtom = atom<OrderType | null>({

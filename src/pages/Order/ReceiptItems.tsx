@@ -1,4 +1,4 @@
-import { CartItemType, Ice, Milk, Size, Syrup } from "../../types";
+import { CartItemType } from "@/types/cart.types";
 import { IonCol, IonIcon, IonImg, IonRow, IonText } from "@ionic/react";
 
 import OrderDescription from "../../utils";

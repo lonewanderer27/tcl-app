@@ -1,11 +1,4 @@
 import {
-  DeliveryOptionType,
-  DeliveryStatusType,
-  OrderType,
-  PaymentOptionType,
-  PaymentStatusType,
-} from "../types";
-import {
   Timestamp,
   addDoc,
   collection,
@@ -25,6 +18,9 @@ import { OrderConvert } from "../converters/orders";
 import { cartAtom } from "../atoms/cart";
 import { getAuth } from "firebase/auth";
 import { orderAtom } from "../atoms/order";
+import { OrderType } from "@/types/cart.types";
+import { DeliveryStatusType, DeliveryOptionType } from "@/types/delivery.types";
+import { PaymentOptionType, PaymentStatusType } from "@/types/payment.types";
 
 export const paymentGatewayURL = (
   paymentOption: PaymentOptionType,

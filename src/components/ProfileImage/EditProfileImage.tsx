@@ -26,7 +26,7 @@ import {
 import { useRef, useState } from "react";
 
 import AnimatedImg from "../AnimatedImg";
-import { Avatar } from "coffee-lounge-types";
+import { Avatar } from "@/types/avatar.types";
 import { FirebaseError } from "firebase/app";
 import ReactAvatarEditor from "react-avatar-editor";
 import { UserConvert } from "../../converters/user";

@@ -14,7 +14,7 @@ import {
   useIonRouter,
 } from "@ionic/react";
 
-import { PaymentOptionType } from "../../types";
+import { PaymentOptionType } from "@/types/payment.types";
 import { payOptionAtom } from "../../atoms/checkout";
 import { useRecoilState } from "recoil";
 import { useState } from "react";

@@ -1,7 +1,7 @@
 import "./IceSizes.css";
 
 import ExtraIce from "/IceSizes/Extra Ice.svg";
-import { Ice as IceAmounts } from "../types";
+import { Ice as IceAmounts } from "@/enums";
 import LightIce from "/IceSizes/Light Ice.svg";
 import NormalIce from "/IceSizes/Normal Ice.svg";
 

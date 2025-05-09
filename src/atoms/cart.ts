@@ -1,6 +1,6 @@
 import { log, sessionStorageEffect } from ".";
 
-import { CartItemType } from "../types";
+import { CartItemType } from "@/types/cart.types";
 import { atom } from "recoil";
 
 export const cartAtom = atom<CartItemType[]>({

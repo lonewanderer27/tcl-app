@@ -1,12 +1,8 @@
-import {
-  BranchType,
-  DeliveryAddressType,
-  DeliveryOptionType,
-  PaymentOptionType,
-} from "../types";
 import { atom, selector } from "recoil";
-
 import { cartAtom } from "./cart";
+import { DeliveryOptionType, BranchType } from "@/types/delivery.types";
+import { PaymentOptionType } from "@/types/payment.types";
+import { DeliveryAddressType } from "@/types/user.types";
 
 export const payOptionAtom = atom<PaymentOptionType | null>({
   key: "payOption",

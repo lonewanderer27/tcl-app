@@ -1,4 +1,4 @@
-import { CartItemType, OrderType } from "../../types";
+import { CartItemType } from "@/types/cart.types";
 import {
   IonBackButton,
   IonButton,
