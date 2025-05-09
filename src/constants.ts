@@ -1,17 +1,12 @@
-import {
-  BranchType,
-  CategoryType,
-  DeliveryAddressType,
-  ProductType,
-  VoucherType,
-} from "./types";
-
 import { Avatar } from "./types/avatar.types";
 import Man from "../src/assets/avatars/man.png"
 import ManAlt from "../src/assets/avatars/man_alt.png"
 import { SystemAvatarNames } from "./types/avatar.types";
 import Woman from "../src/assets/avatars/woman.png"
 import WomanAlt from "../src/assets/avatars/woman_alt.png"
+import { BranchType } from "./types/delivery.types";
+import { ProductType, CategoryType } from "./types/product.types";
+import { DeliveryAddressType } from "./types/user.types";
 
 export const CardImages = [
   {
