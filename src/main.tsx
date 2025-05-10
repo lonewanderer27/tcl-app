@@ -16,13 +16,13 @@ import { initializeApp } from "firebase/app";
 import { isPlatform } from "@ionic/react";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDpRsaLBzTnR1hN1YCkePRqI6BpVdq_NQw",
-  authDomain: "the-coffee-lounge.firebaseapp.com",
-  projectId: "the-coffee-lounge",
-  storageBucket: "the-coffee-lounge.appspot.com",
-  messagingSenderId: "929442369121",
-  appId: "1:929442369121:web:862ca3b3cc78aed7192420",
-  measurementId: "G-MENXM5XNW8",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
 };
 
 export const app = initializeApp(firebaseConfig);
@@ -33,7 +33,7 @@ export const db = initializeFirestore(app, {
   }),
 });
 export const appCheck = initializeAppCheck(app, {
-  provider: new ReCaptchaV3Provider("6LfXQEonAAAAAAjWlyLuYkL040qQff7DhZVxVCip"),
+  provider: new ReCaptchaV3Provider(import.meta.env.VITE_RECAPTCHAV3PROVIDER),
 });
 export const remoteConfig = getRemoteConfig(app);
 
