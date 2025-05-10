@@ -40,7 +40,7 @@ import { useRecoilState, useSetRecoilState } from "recoil";
 import { Capacitor } from "@capacitor/core";
 import { FirebaseAuthentication } from "@capacitor-firebase/authentication";
 import { FirebaseError } from "firebase/app";
-import { LoginProvider } from "../types";
+import { LoginProvider } from "@/enums";
 import Logo2 from "../assets/The Coffee Lounge - Logo 2.svg";
 import { UserConvert } from "../converters/user";
 

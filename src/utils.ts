@@ -1,12 +1,6 @@
-import {
-  AddressType,
-  CartItemType,
-  DeliveryAddressType,
-  Ice,
-  Milk,
-  Size,
-  Syrup,
-} from "./types";
+import { Size, Milk, Syrup, Ice } from "./enums";
+import { CartItemType } from "./types/cart.types";
+import { DeliveryAddressType, AddressType } from "./types/user.types";
 
 /**
  * Returns a string describing the order based on the provided CartItemType.

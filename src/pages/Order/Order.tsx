@@ -1,4 +1,3 @@
-import { DeliveryStatusType, OrderType, PaymentStatusType } from "../../types";
 import {
   IonBackButton,
   IonButton,
@@ -24,12 +23,14 @@ import AnimatedImg from "../../components/AnimatedImg";
 import { Branches } from "../../constants";
 import { OrderConvert } from "../../converters/orders";
 import OrderDescription from "../../utils";
-import { PaymentOptionType } from "coffee-lounge-types";
+import { PaymentOptionType, PaymentStatusType } from "@/types/payment.types";
 import { orderAtom } from "../../atoms/order";
 import { paymentGatewayURL } from "@/hooks/checkout";
 import { phpString } from "../../phpString";
 import { useDocumentData } from "react-firebase-hooks/firestore";
 import { useParams } from "react-router";
+import { OrderType } from "@/types/cart.types";
+import { DeliveryStatusType } from "@/types/delivery.types";
 
 const Data = (props: { order_id: string; orderDetails: OrderType | null }) => {
   const setOrderDetails = useSetRecoilState(orderAtom);

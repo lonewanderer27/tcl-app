@@ -6,7 +6,7 @@ import {
   serverTimestamp,
 } from "firebase/firestore";
 
-import { OrderType } from "../types";
+import { OrderType } from "@/types/cart.types";
 
 export const OrderConvert: FirestoreDataConverter<OrderType> = {
   fromFirestore(

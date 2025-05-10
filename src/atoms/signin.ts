@@ -1,6 +1,5 @@
 import { log, sessionStorageEffect } from ".";
-
-import { LoginProvider } from "../types";
+import { LoginProvider } from "@/enums";
 import { atom } from "recoil";
 import { recoilPersist } from "recoil-persist";
 

@@ -16,7 +16,7 @@ import {
 import { collection, getFirestore, query, where } from "firebase/firestore";
 
 import CartBtn from "../components/CartBtn";
-import { CategoryType } from "../types";
+import { CategoryType } from "@/types/product.types";
 import ProductCard from "../components/ProductCard";
 import { ProductConvert } from "../converters/products";
 import { categoryAtom } from "../atoms/products";

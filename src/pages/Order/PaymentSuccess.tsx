@@ -1,4 +1,3 @@
-import { DeliveryOptionType, PaymentStatusType } from "../../types";
 import {
   IonContent,
   IonIcon,
@@ -23,6 +22,8 @@ import { useDocument } from "react-firebase-hooks/firestore";
 import { useEffect } from "react";
 import { useParams } from "react-router";
 import { useRecoilValue } from "recoil";
+import { DeliveryOptionType } from "@/types/delivery.types";
+import { PaymentStatusType } from "@/types/payment.types";
 
 export default function PaymentSuccess() {
   const { currentUser } = getAuth();

@@ -4,7 +4,7 @@ import { IonImg } from "@ionic/react";
 import LCup from "/Large-Cup.svg";
 import MCup from "/Medium-Cup.svg";
 import SCup from "/Small-Cup.svg";
-import { Size } from "../types";
+import { Size } from "@/enums";
 
 export function Cup(props: { active?: boolean; size: Size }) {
   const determineSize = () => {

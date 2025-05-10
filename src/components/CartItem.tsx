@@ -1,4 +1,3 @@
-import { CartItemType, Ice, Milk, Size, Syrup } from "../types";
 import {
   IonBadge,
   IonCol,
@@ -18,6 +17,8 @@ import { memo, useEffect, useState } from "react";
 import AnimatedImg from "./AnimatedImg";
 import OrderDescription from "../utils";
 import { phpString } from "../phpString";
+import { Size, Milk, Syrup, Ice } from "@/enums";
+import { CartItemType } from "@/types/cart.types";
 
 function CartItem(props: CartItemType) {
   const { removeFromCart, addQty: addItem, removeQty: removeItem } = useCart();

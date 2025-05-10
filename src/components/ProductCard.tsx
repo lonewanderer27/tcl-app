@@ -1,4 +1,3 @@
-import { Ice, Milk, ProductType, Syrup } from "../types";
 import {
   IonCard,
   IonCardContent,
@@ -11,13 +10,14 @@ import {
 } from "@ionic/react";
 
 import AnimatedImg from "./AnimatedImg";
-import { Size } from "../types";
+import { Ice, Milk, Size, Syrup } from "@/enums";
 import { bagAddOutline } from "ionicons/icons";
 import { memo } from "react";
 import { phpString } from "../phpString";
 import { productIdAtom } from "../atoms/products";
 import { useCart } from "../hooks/cart";
 import { useSetRecoilState } from "recoil";
+import { ProductType } from "@/types/product.types";
 
 function ProductCard(props: ProductType) {
   const { addToCart, count } = useCart();

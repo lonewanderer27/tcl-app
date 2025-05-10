@@ -8,7 +8,7 @@ import {
   where,
 } from "firebase/firestore";
 
-import { DeliveryStatusType } from "../../types";
+import { DeliveryStatusType } from "@/types/delivery.types";
 import Empty from "../../components/Empty";
 import { OrderConvert } from "../../converters/orders";
 import OrderItem from "./OrderItem";

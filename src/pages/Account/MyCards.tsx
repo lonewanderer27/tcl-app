@@ -23,7 +23,7 @@ import {
 import { useRef, useState } from "react";
 
 import { CardImages } from "../../constants";
-import { CardItemType } from "../../types";
+import { CardItemType } from "@/types/payment.types";
 import Payment from "payment";
 import { chevronForwardOutline } from "ionicons/icons";
 

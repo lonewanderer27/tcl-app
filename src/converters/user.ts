@@ -6,8 +6,8 @@ import {
   serverTimestamp,
 } from "firebase/firestore";
 
-import { DeliveryAddressType } from "../types";
-import { UserType } from "coffee-lounge-types";
+import { DeliveryAddressType } from "@/types/user.types";
+import { UserType } from "@/types/user.types";
 
 export const DeliveryAddressConvert: FirestoreDataConverter<DeliveryAddressType> =
   {

@@ -1,4 +1,4 @@
-import { CategoryType, ProductType } from "../types";
+import { CategoryType, ProductType } from "@/types/product.types";
 import {
   FirestoreDataConverter,
   QueryDocumentSnapshot,

@@ -1,6 +1,5 @@
 import { CategoryLoading, ProductLoading } from "../constants";
-
-import { CategoryType } from "../types";
+import { CategoryType } from "@/types/product.types";
 import { atom } from "recoil";
 
 export const productIdAtom = atom<string>({
