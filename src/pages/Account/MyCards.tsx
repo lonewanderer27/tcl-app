@@ -20,7 +20,7 @@ import {
   IonTitle,
   IonToolbar,
 } from "@ionic/react";
-import { useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 
 import { CardImages } from "../../constants";
 import { CardItemType } from "@/types/payment.types";
@@ -29,6 +29,7 @@ import { chevronForwardOutline } from "ionicons/icons";
 
 interface CardItemComponentType extends CardItemType {
   onClick?: React.MouseEventHandler<HTMLIonItemElement>;
+  show?: boolean;
 }
 
 export function CardItem(props: CardItemComponentType) {
@@ -44,6 +45,18 @@ export function CardItem(props: CardItemComponentType) {
     }
   };
 
+  const formattedNumbers = Payment.fns.formatCardNumber(props.cardNumber);
+  const parts = formattedNumbers.split(' ');
+
+  // Mask all but the last group, preserving group lengths
+  const masked = parts
+    .map((part, idx) =>
+      idx === parts.length - 1 ? part : '*'.repeat(part.length)
+    )
+    .join(' ');
+
+  const partiallyShownNumbers = masked;
+
   return (
     <IonItem {...additionalProps()}>
       <IonLabel
@@ -54,7 +67,7 @@ export function CardItem(props: CardItemComponentType) {
           style={{ display: "flex", flexDirection: "column" }}
           className="ion-text-start ion-justify-content-center"
         >
-          <h1>{Payment.fns.formatCardNumber(props.cardNumber)}</h1>
+          <h1>{props.show ? formattedNumbers : partiallyShownNumbers}</h1>
           <IonText>{props.cardHolder}</IonText>
         </div>
         <div>
