@@ -45,9 +45,17 @@ export function CardItem(props: CardItemComponentType) {
     }
   };
 
-  const formattedCardNumber = Payment.fns.formatCardNumber(props.cardNumber);
-  const lastFourDigits = formattedCardNumber.split(' ').toReversed()[0];
-  const hiddenCardNumber = `${'**** '.repeat(3)} ${lastFourDigits}`;
+  const formattedNumbers = Payment.fns.formatCardNumber(props.cardNumber);
+  const parts = formattedNumbers.split(' ');
+
+  // Mask all but the last group, preserving group lengths
+  const masked = parts
+    .map((part, idx) =>
+      idx === parts.length - 1 ? part : '*'.repeat(part.length)
+    )
+    .join(' ');
+
+  const partiallyShownNumbers = masked;
 
   return (
     <IonItem {...additionalProps()}>
@@ -59,7 +67,7 @@ export function CardItem(props: CardItemComponentType) {
           style={{ display: "flex", flexDirection: "column" }}
           className="ion-text-start ion-justify-content-center"
         >
-          <h1>{props.show ? formattedCardNumber : hiddenCardNumber}</h1>
+          <h1>{props.show ? formattedNumbers : partiallyShownNumbers}</h1>
           <IonText>{props.cardHolder}</IonText>
         </div>
         <div>
