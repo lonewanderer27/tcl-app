@@ -11,7 +11,7 @@ import {
   IonText,
 } from "@ionic/react";
 import { add, removeOutline, trashOutline } from "ionicons/icons";
-import { computeProductPrice, useCart } from "../hooks/cart";
+import { computeProductPrice, useCart } from "../hooks/useCart";
 import { memo, useEffect, useState } from "react";
 
 import AnimatedImg from "./AnimatedImg";

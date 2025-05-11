@@ -22,7 +22,7 @@ import CartItem from "../components/CartItem";
 import Empty from "../components/Empty";
 import { memo } from "react";
 import { phpString } from "../phpString";
-import { useCart } from "../hooks/cart";
+import { useCart } from "../hooks/useCart";
 
 const Cart: React.FC = () => {
   const { cart, setCart, totalPrice, count } = useCart();

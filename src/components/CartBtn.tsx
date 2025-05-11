@@ -3,7 +3,7 @@ import "./CartBtn.css";
 import { IonBadge, IonButton, IonIcon } from "@ionic/react";
 import { bag, bagOutline } from "ionicons/icons";
 
-import { useCart } from "../hooks/cart";
+import { useCart } from "../hooks/useCart";
 
 export default function CartBtn() {
   const { count } = useCart();
