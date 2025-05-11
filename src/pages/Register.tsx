@@ -31,7 +31,7 @@ import {
 } from "firebase/auth";
 
 import { Action } from "../components/Action";
-import { useColorScheme } from "../hooks/page";
+import useColorScheme from "@/hooks/useColorScheme";
 
 enum GenderEnum {
   Female = "Female",

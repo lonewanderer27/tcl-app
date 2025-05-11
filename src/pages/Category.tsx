@@ -23,7 +23,7 @@ import { categoryAtom } from "../atoms/products";
 import { useCollectionDataOnce } from "react-firebase-hooks/firestore";
 import { useLocation } from "react-router";
 import { useRecoilValue } from "recoil";
-import { useRefresh } from "../hooks/page";
+import { useRefresh } from "../hooks/useRefresh";
 
 export default function CategoryPage() {
   const categoryState = useRecoilValue(categoryAtom);
