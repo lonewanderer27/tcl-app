@@ -138,7 +138,7 @@ function ProductPage() {
     <IonPage>
       <IonHeader translucent={true}>
         <IonToolbar>
-          <IonTitle>View Product</IonTitle>
+          <IonTitle>{productData?.name}</IonTitle>
           <IonButtons slot="start">
             <IonBackButton defaultHref="/"></IonBackButton>
           </IonButtons>
@@ -170,29 +170,21 @@ function ProductPage() {
               </IonBadge>
             )}
             <AnimatedImg
-              className={`${
-                productData?.description ? "mb-5" : ""
-              } w-[60%] h-auto`}
+              className={`${productData?.description ? "mb-5" : ""
+                } w-[60%] h-auto`}
               src={productData?.image}
               alt={productData?.name}
             />
-            <IonText
-              className={`absolute w-full text-2xl font-semibold bottom-0 ${
-                !productData?.description ? "text-center" : "text-left"
-              }`}
-            >
-              {productData?.name}
-            </IonText>
           </IonRow>
-          <IonRow>
+          {productData?.description ?? <IonRow>
             <IonText className="w-full text-justify">
               {productData?.description}
             </IonText>
-          </IonRow>
+          </IonRow>}
         </div>
         <form className="ion-padding">
           {productData?.coffee_type && (
-            <div className="ion-padding">
+            <div className="ion-padding-horizontal">
               <IonSegment
                 onIonChange={(event) => {
                   setValue("size", event.detail.value as Size);
