@@ -50,7 +50,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 
 const PaymentMethods = lazy(() => import("./pages/Checkout/PaymentMethods"));
 
-const ProductPage = lazy(() => import("./pages/Product"));
+const ProductPage = lazy(() => import("./features/Product/pages/Product"));
 
 const CategoryPage = lazy(() => import("./pages/Category"));
 const Orders = lazy(() => import("./pages/Orders"));
