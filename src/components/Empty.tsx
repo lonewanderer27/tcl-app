@@ -3,7 +3,7 @@ import { DotLottiePlayer } from "@dotlottie/react-player";
 import { IonText } from "@ionic/react";
 import { memo } from "react";
 
-const Empty = (props: { title?: string; description?: string }) => {
+const Empty = (props: { title: string; description: string }) => {
   return (
     <div id="notice" className="p-5">
       <DotLottiePlayer src={CoffeeMachine} autoplay loop className="-mt-40">
@@ -13,7 +13,7 @@ const Empty = (props: { title?: string; description?: string }) => {
           </IonText>
           <IonText>
             <h6 className="ion-no-margin">
-              Load up that basket with our premium selection of goods
+              {props.description}
             </h6>
           </IonText>
         </div>
@@ -24,7 +24,7 @@ const Empty = (props: { title?: string; description?: string }) => {
 
 Empty.defaultProps = {
   title: "cart",
-  description: "Load up that basket with our premium selection of goods",
+  description: "Load up that basket with our premium selection of goods!"
 };
 
 export default memo(Empty);
