@@ -53,8 +53,8 @@ const PaymentMethods = lazy(() => import("./pages/Checkout/PaymentMethods"));
 const ProductPage = lazy(() => import("./pages/Product"));
 
 const CategoryPage = lazy(() => import("./pages/Category"));
-const Orders = lazy(() => import("./pages/Orders"));
-const Order = lazy(() => import("./pages/Order/Order"));
+const Orders = lazy(() => import("./features/Order/pages/Orders"));
+const Order = lazy(() => import("./features/Order/pages/Order"));
 const EditDeliveryAddress = lazy(() => import("./pages/EditDeliveryAddress"));
 const Cart = lazy(() => import("./pages/Cart"));
 const Checkout = lazy(() => import("./pages/Checkout"));
@@ -70,11 +70,11 @@ const ProfileAndSecurity = lazy(
 const ChangePassword = lazy(
   () => import("./pages/Account/ProfileAndSecurity/ChangePassword")
 );
-const Receipt = lazy(() => import("./pages/Order/Receipt"));
+const Receipt = lazy(() => import("./features/Order/pages/Receipt"));
 const MyCards = lazy(() => import("./pages/Account/MyCards"));
 const Intro = lazy(() => import("./pages/Intro"));
 const About = lazy(() => import("./pages/About"));
-const PaymentSuccess = lazy(() => import("./pages/Order/PaymentSuccess"));
+const PaymentSuccess = lazy(() => import("./features/Order/pages/PaymentSuccess"));
 
 // Setup DayJS with relative time plugin
 dayjs.extend(relativeTime)

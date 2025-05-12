@@ -12,12 +12,12 @@ import {
   updateDoc,
 } from "firebase/firestore";
 
-import { Action } from "../../components/Action";
+import { Action } from "../../../components/Action";
 import { DotLottiePlayer } from "@dotlottie/react-player";
-import { OrderConvert } from "../../converters/orders";
+import { OrderConvert } from "../../../converters/orders";
 import { bagCheckOutline } from "ionicons/icons";
 import { getAuth } from "firebase/auth";
-import { orderAtom } from "../../atoms/order";
+import { orderAtom } from "../../../atoms/order";
 import { useDocument } from "react-firebase-hooks/firestore";
 import { useEffect } from "react";
 import { useParams } from "react-router";
