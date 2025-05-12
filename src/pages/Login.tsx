@@ -28,7 +28,7 @@ import { FirebaseError } from "firebase/app";
 import Logo2 from "../assets/The Coffee Lounge - Logo 2.svg";
 import { logInOutline } from "ionicons/icons";
 import { nextUrl } from "../App";
-import { useColorScheme } from "../hooks/useRefresh";
+import useColorScheme from "@/hooks/useColorScheme";
 import { useHistory } from "react-router";
 
 interface IFormInput {
