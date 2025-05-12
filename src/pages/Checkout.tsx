@@ -33,8 +33,8 @@ import { DeliveryOptionType } from "@/types/delivery.types";
 import { LocationDescription } from "../utils";
 import { memo } from "react";
 import { phpString } from "../phpString";
-import { useCart } from "../hooks/cart";
-import { useCheckout } from "../hooks/checkout";
+import { useCart } from "../hooks/useCart";
+import { useCheckout } from "../hooks/useCheckout";
 
 function Checkout() {
   const { totalPrice, count } = useCart();

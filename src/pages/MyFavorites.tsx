@@ -20,7 +20,7 @@ import { ProductConvert } from "../converters/products";
 import { ProductLoading } from "../constants";
 import { memo } from "react";
 import { useCollectionDataOnce } from "react-firebase-hooks/firestore";
-import useFavorite from "../hooks/favorite";
+import useFavorite from "../hooks/useFavorite";
 
 function MyFavorites() {
   const db = getFirestore();

@@ -32,8 +32,8 @@ import { categoryAtom } from "../atoms/products";
 import { chevronForwardOutline } from "ionicons/icons";
 import { getAuth } from "firebase/auth";
 import { useCollectionDataOnce } from "react-firebase-hooks/firestore";
-import useFavorite from "../hooks/favorite";
-import { useRefresh } from "../hooks/page";
+import useFavorite from "../hooks/useFavorite";
+import useRefresh from "@/hooks/useRefresh";
 import { useSetRecoilState } from "recoil";
 
 // import ProductCard from "../components/ProductCard";

@@ -15,7 +15,7 @@ import { bagAddOutline } from "ionicons/icons";
 import { memo } from "react";
 import { phpString } from "../phpString";
 import { productIdAtom } from "../atoms/products";
-import { useCart } from "../hooks/cart";
+import { useCart } from "../hooks/useCart";
 import { useSetRecoilState } from "recoil";
 import { ProductType } from "@/types/product.types";
 

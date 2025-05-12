@@ -25,7 +25,7 @@ import {
 } from "@ionic/react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { addOutline, removeOutline } from "ionicons/icons";
-import { computeProductPrice, useCart } from "../hooks/cart";
+import { computeProductPrice, useCart } from "../hooks/useCart";
 import { doc, getFirestore } from "firebase/firestore";
 import { memo, useEffect, useState } from "react";
 
@@ -39,7 +39,7 @@ import { phpString } from "../phpString";
 import { productIdAtom } from "../atoms/products";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useDocumentDataOnce } from "react-firebase-hooks/firestore";
-import useFavorite from "../hooks/favorite";
+import useFavorite from "../hooks/useFavorite";
 import { useParams } from "react-router";
 import { useRecoilValue } from "recoil";
 import { Size, Milk, Syrup, Ice, Additive } from "@/enums";

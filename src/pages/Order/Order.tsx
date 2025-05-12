@@ -25,7 +25,7 @@ import { OrderConvert } from "../../converters/orders";
 import OrderDescription from "../../utils";
 import { PaymentOptionType, PaymentStatusType } from "@/types/payment.types";
 import { orderAtom } from "../../atoms/order";
-import { paymentGatewayURL } from "@/hooks/checkout";
+import { paymentGatewayURL } from "@/hooks/useCheckout";
 import { phpString } from "../../phpString";
 import { useDocumentData } from "react-firebase-hooks/firestore";
 import { useParams } from "react-router";
