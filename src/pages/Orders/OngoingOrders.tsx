@@ -45,7 +45,7 @@ function OngoingOrders() {
           </IonItem>
         ))}
       </IonList>
-      {orders?.length === 0 && (<Empty title="orders" />)}
+      {orders?.length === 0 && (<Empty title="You have no ongoing orders" />)}
     </IonContent>
   );
 }
