@@ -60,7 +60,7 @@ const Cart: React.FC = () => {
         )}
         {count === 0 && <Empty />}
       </IonContent>
-      <IonFooter>
+      {count > 0 && <IonFooter>
         <IonToolbar>
           <IonRow className="ion-align-items-center">
             <IonCol
@@ -96,7 +96,7 @@ const Cart: React.FC = () => {
             </IonCol>
           </IonRow>
         </IonToolbar>
-      </IonFooter>
+      </IonFooter>}
     </IonPage>
   );
 };
