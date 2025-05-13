@@ -1,5 +1,3 @@
-import "../../../pages./features/Cart/pages/Cart.css";
-
 import {
   IonBackButton,
   IonButton,

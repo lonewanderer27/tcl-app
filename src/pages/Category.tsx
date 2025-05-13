@@ -15,7 +15,7 @@ import {
 } from "@ionic/react";
 import { collection, getFirestore, query, where } from "firebase/firestore";
 
-import CartBtn from "../components/CartBtn";
+import CartBtn from "@/features/Cart/components/CartBtn";
 import { CategoryType } from "@/types/product.types";
 import ProductCard from "../components/ProductCard";
 import { ProductConvert } from "../converters/products";
