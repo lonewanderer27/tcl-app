@@ -11,11 +11,11 @@ import {
 import { OrderType } from "@/types/cart.types";
 import { PaymentStatusType } from "@/types/payment.types";
 
-import AnimatedImg from "../../components/AnimatedImg";
+import AnimatedImg from "@/components/AnimatedImg";
 import { chevronForwardOutline } from "ionicons/icons";
 import { memo } from "react";
-import { orderAtom } from "../../atoms/order";
-import { phpString } from "../../phpString";
+import { orderAtom } from "@/atoms/order";
+import { phpString } from "@/phpString";
 import { useSetRecoilState } from "recoil";
 
 function OrderItem(props: OrderType) {

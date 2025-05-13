@@ -20,16 +20,16 @@ import { Suspense, lazy, memo, useEffect, useState } from "react";
 import { doc, getFirestore } from "firebase/firestore";
 import { fetchAndActivate, fetchConfig, getValue } from "firebase/remote-config";
 
-import { OrderConvert } from "../../converters/orders";
+import { OrderConvert } from "../../../converters/orders";
 import { downloadOutline } from "ionicons/icons";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
-import { phpString } from "../../phpString";
+import { phpString } from "../../../phpString";
 import { useDocumentDataOnce } from "react-firebase-hooks/firestore";
 import { useParams } from "react-router";
 import { remoteConfig } from "@/main";
 
-const ReceiptItems = lazy(() => import("./ReceiptItems"));
+const ReceiptItems = lazy(() => import("../components/ReceiptItems"));
 const QRCode = lazy(() => import("react-qr-code"));
 const Barcode = lazy(() => import("react-barcode"));
 

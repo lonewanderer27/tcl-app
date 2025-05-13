@@ -1,7 +1,7 @@
 import { CartItemType } from "@/types/cart.types";
 import { IonCol, IonIcon, IonImg, IonRow, IonText } from "@ionic/react";
 
-import OrderDescription from "../../utils";
+import OrderDescription from "../../../utils";
 import { memo } from "react";
 
 function ReceiptItems(props: CartItemType) {

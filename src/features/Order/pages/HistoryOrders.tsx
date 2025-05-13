@@ -13,9 +13,9 @@ import {
   useDocument,
 } from "react-firebase-hooks/firestore";
 import { DeliveryStatusType } from "@/types/delivery.types";
-import Empty from "../../components/Empty";
-import { OrderConvert } from "../../converters/orders";
-import OrderItem from "./OrderItem";
+import Empty from "../../../components/Empty";
+import { OrderConvert } from "../../../converters/orders";
+import OrderItem from "../components/OrderItem";
 import { getAuth } from "firebase/auth";
 import { memo } from "react";
 

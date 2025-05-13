@@ -9,8 +9,8 @@ import {
 } from "@ionic/react";
 import { memo, useState } from "react";
 
-import HistoryOrders from "./Orders/HistoryOrders";
-import OngoingOrders from "./Orders/OngoingOrders";
+import HistoryOrders from "./HistoryOrders";
+import OngoingOrders from "./OngoingOrders";
 
 function Orders() {
   const [activeSegment, setActiveSegment] = useState<"ongoing" | "history">(
