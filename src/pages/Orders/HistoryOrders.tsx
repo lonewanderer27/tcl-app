@@ -42,7 +42,7 @@ function HistoryOrders() {
             <OrderItem key={`orderItem:${order.id}:${index}`} {...order} />
           ))}
         </IonRow>
-        {orders?.length === 0 && <Empty title="orders" />}
+        {orders?.length === 0 && <Empty title="You have no past orders" />}
       </IonGrid>
     </IonContent>
   );
