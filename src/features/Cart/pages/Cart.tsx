@@ -1,4 +1,4 @@
-import "./Cart.css";
+import "../../../pages./features/Cart/pages/Cart.css";
 
 import {
   IonBackButton,
@@ -18,11 +18,11 @@ import {
   IonToolbar,
 } from "@ionic/react";
 
-import CartItem from "../components/CartItem";
-import Empty from "../components/Empty";
+import CartItem from "../../../components/CartItem";
+import Empty from "../../../components/Empty";
 import { memo } from "react";
-import { phpString } from "../phpString";
-import { useCart } from "../hooks/useCart";
+import { phpString } from "../../../phpString";
+import { useCart } from "../../../hooks/useCart";
 
 const Cart: React.FC = () => {
   const { cart, setCart, totalPrice, count } = useCart();

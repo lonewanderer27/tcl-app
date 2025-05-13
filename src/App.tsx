@@ -56,7 +56,7 @@ const CategoryPage = lazy(() => import("./pages/Category"));
 const Orders = lazy(() => import("./pages/Orders"));
 const Order = lazy(() => import("./pages/Order/Order"));
 const EditDeliveryAddress = lazy(() => import("./pages/EditDeliveryAddress"));
-const Cart = lazy(() => import("./pages/Cart"));
+const Cart = lazy(() => import("./features/Cart/pages/Cart"));
 const Checkout = lazy(() => import("./pages/Checkout"));
 const Explore = lazy(() => import("./pages/Explore"));
 const MyFavorites = lazy(() => import("./pages/MyFavorites"));
