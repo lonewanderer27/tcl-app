@@ -16,9 +16,9 @@ export default function CartBtn() {
         size="large"
         className="ion-margin-right"
       ></IonIcon>
-      <IonBadge id="cartCount" color="danger">
+      {count > 0 && <IonBadge id="cartCount" color="danger">
         {count}
-      </IonBadge>
+      </IonBadge>}
     </IonButton>
   );
 }
