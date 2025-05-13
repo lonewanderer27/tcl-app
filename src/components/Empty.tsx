@@ -9,7 +9,7 @@ const Empty = (props: { title: string; description: string, animation: string })
       <DotLottiePlayer src={props.animation} autoplay loop className="-mt-40">
         <div className="mt-[-50px] z-10">
           <IonText>
-            <h3 className="font-bold">Your {props.title} is empty</h3>
+            <h3 className="font-bold">{props.title}</h3>
           </IonText>
           <IonText>
             <h6 className="ion-no-margin">
@@ -23,7 +23,7 @@ const Empty = (props: { title: string; description: string, animation: string })
 };
 
 Empty.defaultProps = {
-  title: "cart",
+  title: "Your cart is empty",
   description: "Load up that basket with our premium selection of goods!",
   animation: CoffeeMachine
 };
