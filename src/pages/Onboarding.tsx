@@ -20,7 +20,8 @@ import {
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { getAuth, updateProfile } from "firebase/auth";
 import { memo, useState } from "react";
-
+import { object, string } from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { FirebaseError } from "firebase/app";
 import ProfileImage from "../components/ProfileImage";
 import { UserConvert } from "../converters/user";
@@ -28,11 +29,14 @@ import { isPlatform } from "@ionic/react";
 import { useDocument } from "react-firebase-hooks/firestore";
 import { Gender, Pronouns } from "@/enums";
 
+const VSFormValues = object().shape({
+  nickname: string().required('Nickname is required'),
+});
+
 interface IFormInput {
   nickname: string;
-  gender?: Gender;
-  pronouns?: Pronouns;
-  updatedAt?: FieldValue;
+  gender?: string;
+  pronouns?: string;
 }
 
 function Onboarding() {
@@ -48,15 +52,13 @@ function Onboarding() {
   const [values] = useDocument(userRef);
   let userData: any;
 
-  console.info(values);
-
   const {
     handleSubmit,
-    getValues,
     watch,
     control,
     formState: { isValid, isValidating },
   } = useForm<IFormInput>({
+    resolver: yupResolver(VSFormValues),
     defaultValues: async () => {
       userData = await getDoc(userRef);
       return {
@@ -79,7 +81,7 @@ function Onboarding() {
       });
 
       // construct the user data
-      const formData: IFormInput = {
+      const formData = {
         nickname: data.nickname,
         updatedAt: serverTimestamp(),
         ...(data.gender && { gender: data.gender }),
@@ -108,7 +110,6 @@ function Onboarding() {
   };
 
   const currentUser = auth.currentUser;
-  console.log("values: ", getValues());
 
   return (
     <IonPage>
