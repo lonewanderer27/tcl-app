@@ -157,7 +157,7 @@ const SignUp: React.FC = () => {
             />
             
             <p className="ion-text-center mt-8">
-              By tapping "Create Account" you agree to our{" "}
+              By tapping "Join" you agree to our{" "}
               <IonRouterLink>Terms of Use</IonRouterLink> and{" "}
               <IonRouterLink>Privacy Policy</IonRouterLink>
             </p>
@@ -168,7 +168,7 @@ const SignUp: React.FC = () => {
               disabled={!isValid}
               className="ion-margin-top"
             >
-              Create Account
+              Join
             </IonButton>
             <Action
               message="Have an account?"
