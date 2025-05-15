@@ -13,6 +13,7 @@ import {
   IonButtons,
   IonContent,
   IonHeader,
+  IonIcon,
   IonImg,
   IonInput,
   IonPage,
@@ -32,6 +33,7 @@ import {
 
 import { Action } from "../components/Action";
 import useColorScheme from "@/hooks/useColorScheme";
+import { lockClosedOutline, mailOutline } from "ionicons/icons";
 
 enum GenderEnum {
   Female = "Female",
@@ -42,10 +44,6 @@ enum GenderEnum {
 interface IFormInput {
   email: string;
   password: string;
-  gender?: GenderEnum;
-  pronouns?: string;
-  nickname: string;
-  updatedAt?: FieldValue;
 }
 
 const SignUp: React.FC = () => {
@@ -78,13 +76,6 @@ const SignUp: React.FC = () => {
         const user = userCredential.user;
         console.log(user);
 
-        // update firebase user profile
-        (async () => {
-          await updateProfile(auth.currentUser!, {
-            displayName: data.nickname,
-          });
-        })();
-
         // construct the user data
         const userData: {
           createdAt: FieldValue;
@@ -114,6 +105,8 @@ const SignUp: React.FC = () => {
   };
 
   const { colorScheme } = useColorScheme();
+  console.log("isValid: ", isValid);
+  console.log("errors: ", errors);
 
   return (
     <IonPage>
@@ -140,22 +133,24 @@ const SignUp: React.FC = () => {
               className="w-[35%] mx-auto"
             />
             <IonInput
-              label="Email"
               labelPlacement="fixed"
               className="ion-margin-top"
               fill="outline"
-              type="text"
+              type="email"
               {...register("email", { required: true })}
-            />
+            >
+              <IonIcon slot="label" className="text-2xl" src={mailOutline} />
+            </IonInput>
             <IonInput
-              className="mt-2 "
+              className="mt-2"
               fill="outline"
-              label="Password"
               labelPlacement="fixed"
               type="password"
               {...register("password", { required: true })}
-            />
-            
+            >
+              <IonIcon slot="start" className="text-2xl" src={lockClosedOutline} />
+            </IonInput>
+
             <p className="ion-text-center mt-8">
               By tapping "Join" you agree to our{" "}
               <IonRouterLink>Terms of Use</IonRouterLink> and{" "}
