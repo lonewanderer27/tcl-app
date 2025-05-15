@@ -19,7 +19,7 @@ import {
 } from "@ionic/react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { getAuth, updateProfile } from "firebase/auth";
-import { memo, useState } from "react";
+import { useState } from "react";
 import { object, string } from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { FirebaseError } from "firebase/app";
@@ -115,13 +115,13 @@ function Onboarding() {
     <IonPage>
       <IonContent className="ion-padding">
         <div className="p-4 pt-0">
-          <ProfileImage
-            currentUser={currentUser}
-            gender={watch("gender")}
-            imgClassName="my-5 w-2/4 ml-[-20px] rounded-full"
-            onboarding
-            showEditBtn
-          />
+          <div className="w-2/4 mx-auto mb-10">
+            <ProfileImage
+              currentUser={currentUser}
+              gender={watch("gender")}
+              showEditBtn
+            />
+          </div>
           <h6 className="font-bold">Before you start</h6>
           <p>
             To personalize your orders, we would like to ask you a few things.
@@ -212,4 +212,4 @@ function Onboarding() {
   );
 }
 
-export default memo(Onboarding);
+export default Onboarding;
