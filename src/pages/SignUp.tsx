@@ -24,22 +24,25 @@ import {
   useIonRouter,
   useIonToast,
 } from "@ionic/react";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { object, string } from "yup";
+import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import {
   createUserWithEmailAndPassword,
   getAuth,
-  updateProfile,
 } from "firebase/auth";
 
 import { Action } from "../components/Action";
 import { lockClosedOutline, mailOutline } from "ionicons/icons";
 import Logo2 from "@/assets/The Coffee Lounge - Logo 2.svg";
 
-enum GenderEnum {
-  Female = "Female",
-  Male = "Male",
-  NonBinary = "Non-Binary",
-}
+const VSFormField = object().shape({
+  email: string().email().required("Your email is required"),
+  password: string().matches(
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
+    "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
+  ).required("A password must be given")
+});
 
 interface IFormInput {
   email: string;
@@ -54,8 +57,10 @@ const SignUp: React.FC = () => {
   const {
     register,
     handleSubmit,
+    getValues,
+    control,
     formState: { errors, isValid },
-  } = useForm<IFormInput>();
+  } = useForm<IFormInput>({ resolver: yupResolver(VSFormField) });
 
   const [presentToast] = useIonToast();
   const [presentLoading, dismiss] = useIonLoading();
@@ -106,6 +111,7 @@ const SignUp: React.FC = () => {
 
   console.log("isValid: ", isValid);
   console.log("errors: ", errors);
+  console.log("values", getValues());
 
   return (
     <IonPage>
@@ -127,24 +133,40 @@ const SignUp: React.FC = () => {
               src={Logo2}
               className="w-[35%] mx-auto tcl-logo"
             />
-            <IonInput
-              labelPlacement="fixed"
-              className="ion-margin-top"
-              fill="outline"
-              type="email"
-              {...register("email", { required: true })}
-            >
-              <IonIcon slot="label" className="text-2xl" src={mailOutline} />
-            </IonInput>
-            <IonInput
-              className="mt-2"
-              fill="outline"
-              labelPlacement="fixed"
-              type="password"
-              {...register("password", { required: true })}
-            >
-              <IonIcon slot="start" className="text-2xl" src={lockClosedOutline} />
-            </IonInput>
+            <Controller
+              name="email"
+              control={control}
+              render={({ field }) => (
+                <IonInput
+                  {...field}
+                  labelPlacement="fixed"
+                  className="ion-margin-top"
+                  fill="outline"
+                  type="email"
+                  onIonChange={(e) => field.onChange(e)}
+                  onIonBlur={() => field.onBlur()}
+                >
+                  <IonIcon slot="label" className="text-2xl" src={mailOutline} />
+                </IonInput>
+              )}
+            />
+            <Controller
+              name="password"
+              control={control}
+              render={({ field }) => (
+                <IonInput
+                  className="mt-2"
+                  fill="outline"
+                  labelPlacement="fixed"
+                  type="password"
+                  onIonChange={(e) => field.onChange(e)}
+                  onIonBlur={() => field.onBlur()}
+                  {...register("password", { required: true })}
+                >
+                  <IonIcon slot="start" className="text-2xl" src={lockClosedOutline} />
+                </IonInput>
+              )}
+            />
 
             <p className="ion-text-center mt-8">
               By tapping "Join" you agree to our{" "}
