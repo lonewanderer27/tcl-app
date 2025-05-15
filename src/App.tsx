@@ -39,7 +39,7 @@ import { IonReactRouter } from "@ionic/react-router";
 import Login from "./pages/Login";
 import Onboarding from "./pages/Onboarding";
 import { Preferences } from "@capacitor/preferences";
-import Register from "./pages/Register";
+import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import dayjs from "dayjs";
 import { getAuth } from "firebase/auth";
@@ -227,9 +227,9 @@ function App() {
               <Route exact path="/">
                 <Redirect to="/home" />
               </Route>
-              <Route exact path="/register">
+              <Route exact path="/signup">
                 <Suspense>
-                  <Register />
+                  <SignUp />
                 </Suspense>
               </Route>
               <Route exact path="/login">

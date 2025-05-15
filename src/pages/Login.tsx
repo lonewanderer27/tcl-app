@@ -131,7 +131,7 @@ const Login: React.FC = () => {
           </IonButton>
           <Action
             message="Don't have an account?"
-            link="/register"
+            link="/signup"
             text="Signup"
           />
         </div>

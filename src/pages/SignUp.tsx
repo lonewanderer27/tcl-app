@@ -48,7 +48,7 @@ interface IFormInput {
   updatedAt?: FieldValue;
 }
 
-const Register: React.FC = () => {
+const SignUp: React.FC = () => {
   const router = useIonRouter();
   const db = getFirestore();
   const auth = getAuth();
@@ -119,7 +119,7 @@ const Register: React.FC = () => {
     <IonPage>
       <IonHeader translucent={true}>
         <IonToolbar>
-          <IonTitle>Register</IonTitle>
+          <IonTitle>Sign Up</IonTitle>
           <IonButtons slot="start">
             <IonBackButton></IonBackButton>
           </IonButtons>
@@ -183,4 +183,4 @@ const Register: React.FC = () => {
   );
 };
 
-export default Register;
+export default SignUp;
