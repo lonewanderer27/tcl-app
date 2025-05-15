@@ -161,10 +161,9 @@ function Onboarding() {
                   onIonChange={e => field.onChange(e)}
                   onIonBlur={() => field.onBlur()}
                 >
-                  <IonSelectOption value={Gender.Male}>{Gender.Male}</IonSelectOption>
-                  <IonSelectOption value={Gender.Female}>{Gender.Female}</IonSelectOption>
-                  <IonSelectOption value={Gender.NonBinary}>{Gender.NonBinary}</IonSelectOption>
-                  <IonSelectOption value={Gender.IdRatherNotSay}>{Gender.IdRatherNotSay}</IonSelectOption>
+                  {Object.values(Gender).map((gender, i) =>
+                    <IonSelectOption key={i} value={gender}>{gender}</IonSelectOption>
+                  )}
                 </IonSelect>
               )}
             />
@@ -183,10 +182,9 @@ function Onboarding() {
                   onIonChange={e => field.onChange(e)}
                   onIonBlur={() => field.onBlur()}
                 >
-                  <IonSelectOption value={Pronouns.HeHim}>{Pronouns.HeHim}</IonSelectOption>
-                  <IonSelectOption value={Pronouns.SheHer}>{Pronouns.SheHer}</IonSelectOption>
-                  <IonSelectOption value={Pronouns.TheyThem}>{Pronouns.TheyThem}</IonSelectOption>
-                  <IonSelectOption value={Pronouns.IdRatherNotSay}>{Pronouns.IdRatherNotSay}</IonSelectOption>
+                  {Object.values(Pronouns).map((pronoun, i) =>
+                    <IonSelectOption key={i} value={pronoun}>{pronoun}</IonSelectOption>
+                  )}
                 </IonSelect>
               )}
             />
