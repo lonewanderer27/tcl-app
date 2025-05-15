@@ -30,7 +30,7 @@ import { doc, getFirestore } from "firebase/firestore";
 import { memo, useEffect, useState } from "react";
 
 import AnimatedImg from "../components/AnimatedImg";
-import CartBtn from "../components/CartBtn";
+import CartBtn from "@/features/Cart/components/CartBtn";
 import Heart from "react-heart";
 import { ProductConvert } from "../converters/products";
 import { ProductLoading } from "../constants";

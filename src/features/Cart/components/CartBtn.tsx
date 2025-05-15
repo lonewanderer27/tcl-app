@@ -3,7 +3,7 @@ import "./CartBtn.css";
 import { IonBadge, IonButton, IonIcon } from "@ionic/react";
 import { bag, bagOutline } from "ionicons/icons";
 
-import { useCart } from "../hooks/useCart";
+import { useCart } from "../../../hooks/useCart";
 
 export default function CartBtn() {
   const { count } = useCart();
@@ -16,9 +16,9 @@ export default function CartBtn() {
         size="large"
         className="ion-margin-right"
       ></IonIcon>
-      <IonBadge id="cartCount" color="danger">
+      {count > 0 && <IonBadge id="cartCount" color="danger">
         {count}
-      </IonBadge>
+      </IonBadge>}
     </IonButton>
   );
 }

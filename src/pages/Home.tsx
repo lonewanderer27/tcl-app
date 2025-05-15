@@ -26,7 +26,7 @@ import { collection, getFirestore, query, where } from "firebase/firestore";
 
 import AnimatedImg from "../components/AnimatedImg";
 import { Autoplay } from "swiper/modules";
-import CartBtn from "../components/CartBtn";
+import CartBtn from "@/features/Cart/components/CartBtn";
 import { ProductLoading } from "../constants";
 import { categoryAtom } from "../atoms/products";
 import { chevronForwardOutline } from "ionicons/icons";

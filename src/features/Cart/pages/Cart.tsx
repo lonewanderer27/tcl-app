@@ -1,5 +1,3 @@
-import "./Cart.css";
-
 import {
   IonBackButton,
   IonButton,
@@ -18,11 +16,11 @@ import {
   IonToolbar,
 } from "@ionic/react";
 
-import CartItem from "../components/CartItem";
-import Empty from "../components/Empty";
+import CartItem from "../../../components/CartItem";
+import Empty from "../../../components/Empty";
 import { memo } from "react";
-import { phpString } from "../phpString";
-import { useCart } from "../hooks/useCart";
+import { phpString } from "../../../phpString";
+import { useCart } from "../../../hooks/useCart";
 
 const Cart: React.FC = () => {
   const { cart, setCart, totalPrice, count } = useCart();
@@ -62,7 +60,7 @@ const Cart: React.FC = () => {
         )}
         {count === 0 && <Empty />}
       </IonContent>
-      <IonFooter>
+      {count > 0 && <IonFooter>
         <IonToolbar>
           <IonRow className="ion-align-items-center">
             <IonCol
@@ -98,7 +96,7 @@ const Cart: React.FC = () => {
             </IonCol>
           </IonRow>
         </IonToolbar>
-      </IonFooter>
+      </IonFooter>}
     </IonPage>
   );
 };
