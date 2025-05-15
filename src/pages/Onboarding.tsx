@@ -135,13 +135,13 @@ function Onboarding() {
               control={control}
               render={({ field }) => (
                 <IonInput
+                  {...field}
                   label="Nickname"
                   labelPlacement="start"
                   fill="outline"
                   placeholder="What should we call you?"
                   onIonChange={e => field.onChange(e)}
                   onIonBlur={() => field.onBlur()}
-                  value={watch("nickname")}
                   className="ion-text-end"
                 />
               )}
@@ -160,7 +160,6 @@ function Onboarding() {
                   className="mt-3"
                   onIonChange={e => field.onChange(e)}
                   onIonBlur={() => field.onBlur()}
-                  value={watch("gender")}
                 >
                   <IonSelectOption value={Gender.Male}>{Gender.Male}</IonSelectOption>
                   <IonSelectOption value={Gender.Female}>{Gender.Female}</IonSelectOption>
@@ -183,7 +182,6 @@ function Onboarding() {
                   className="mt-3"
                   onIonChange={e => field.onChange(e)}
                   onIonBlur={() => field.onBlur()}
-                  value={watch("pronouns")}
                 >
                   <IonSelectOption value={Pronouns.HeHim}>{Pronouns.HeHim}</IonSelectOption>
                   <IonSelectOption value={Pronouns.SheHer}>{Pronouns.SheHer}</IonSelectOption>
