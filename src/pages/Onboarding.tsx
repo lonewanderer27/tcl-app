@@ -1,4 +1,3 @@
-import { ComboBox, Item } from "../components/ComboBox";
 import {
   FieldValue,
   doc,
@@ -12,12 +11,13 @@ import {
   IonContent,
   IonInput,
   IonPage,
-  IonRow,
+  IonSelect,
+  IonSelectOption,
   IonSpinner,
   useIonAlert,
   useIonRouter,
 } from "@ionic/react";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { getAuth, updateProfile } from "firebase/auth";
 import { memo, useState } from "react";
 
@@ -26,11 +26,12 @@ import ProfileImage from "../components/ProfileImage";
 import { UserConvert } from "../converters/user";
 import { isPlatform } from "@ionic/react";
 import { useDocument } from "react-firebase-hooks/firestore";
+import { Gender, Pronouns } from "@/enums";
 
 interface IFormInput {
   nickname: string;
-  gender?: string;
-  pronouns?: string;
+  gender?: Gender;
+  pronouns?: Pronouns;
   updatedAt?: FieldValue;
 }
 
@@ -50,10 +51,10 @@ function Onboarding() {
   console.info(values);
 
   const {
-    register,
     handleSubmit,
-    setValue,
+    getValues,
     watch,
+    control,
     formState: { isValid, isValidating },
   } = useForm<IFormInput>({
     defaultValues: async () => {
@@ -107,6 +108,7 @@ function Onboarding() {
   };
 
   const currentUser = auth.currentUser;
+  console.log("values: ", getValues());
 
   return (
     <IonPage>
@@ -127,57 +129,68 @@ function Onboarding() {
             className="flex flex-col justify-center items-center mt-8"
             onSubmit={handleSubmit(onSubmit)}
           >
-            <IonInput
-              label="Nickname"
-              labelPlacement="floating"
-              fill="outline"
-              placeholder="What should we call you?"
-              {...register("nickname", { required: true })}
+            <Controller
+              name="nickname"
+              control={control}
+              render={({ field }) => (
+                <IonInput
+                  label="Nickname"
+                  labelPlacement="start"
+                  fill="outline"
+                  placeholder="What should we call you?"
+                  onIonChange={e => field.onChange(e)}
+                  onIonBlur={() => field.onBlur()}
+                  value={watch("nickname")}
+                  className="ion-text-end"
+                />
+              )}
             />
-            <IonRow>
-              <div>
-                <div className="mt-2">
-                  <ComboBox
-                    inputValue={watch("gender")}
-                    label="Gender (Optional)"
-                    {...register("gender", { required: false })}
-                    onInputChange={(v) => {
-                      if (v.includes("not say")) {
-                        setValue("gender", "");
-                      } else {
-                        setValue("gender", v);
-                      }
-                    }}
-                  >
-                    <Item key="Male">Male</Item>
-                    <Item key="Female">Female</Item>
-                    <Item key="Non Binary">Non-Binary</Item>
-                    <Item key="I'd rather not say">I'd rather not say</Item>
-                  </ComboBox>
-                </div>
-              </div>
-              <div>
-                <div className="mt-2">
-                  <ComboBox
-                    inputValue={watch("pronouns")}
-                    label="Pronouns (Optional)"
-                    {...register("pronouns", { required: false })}
-                    onInputChange={(v) => {
-                      if (v.includes("not say")) {
-                        setValue("pronouns", "");
-                      } else {
-                        setValue("pronouns", v);
-                      }
-                    }}
-                  >
-                    <Item key="He/Him">He/Him</Item>
-                    <Item key="She/Her">She/Her</Item>
-                    <Item key="They/Them">They/Them</Item>
-                    <Item key="I'd rather not say">I'd rather not say</Item>
-                  </ComboBox>
-                </div>
-              </div>
-            </IonRow>
+            <Controller
+              name="gender"
+              control={control}
+              render={({ field }) => (
+                <IonSelect
+                  {...field}
+                  interface="action-sheet"
+                  label="Gender"
+                  labelPlacement="fixed"
+                  placeholder="Select (Optional)"
+                  fill="outline"
+                  className="mt-3"
+                  onIonChange={e => field.onChange(e)}
+                  onIonBlur={() => field.onBlur()}
+                  value={watch("gender")}
+                >
+                  <IonSelectOption value={Gender.Male}>{Gender.Male}</IonSelectOption>
+                  <IonSelectOption value={Gender.Female}>{Gender.Female}</IonSelectOption>
+                  <IonSelectOption value={Gender.NonBinary}>{Gender.NonBinary}</IonSelectOption>
+                  <IonSelectOption value={Gender.IdRatherNotSay}>{Gender.IdRatherNotSay}</IonSelectOption>
+                </IonSelect>
+              )}
+            />
+            <Controller
+              name="pronouns"
+              control={control}
+              render={({ field }) => (
+                <IonSelect
+                  {...field}
+                  interface="action-sheet"
+                  label="Pronouns"
+                  labelPlacement="fixed"
+                  placeholder="Select (Optional)"
+                  fill="outline"
+                  className="mt-3"
+                  onIonChange={e => field.onChange(e)}
+                  onIonBlur={() => field.onBlur()}
+                  value={watch("pronouns")}
+                >
+                  <IonSelectOption value={Pronouns.HeHim}>{Pronouns.HeHim}</IonSelectOption>
+                  <IonSelectOption value={Pronouns.SheHer}>{Pronouns.SheHer}</IonSelectOption>
+                  <IonSelectOption value={Pronouns.TheyThem}>{Pronouns.TheyThem}</IonSelectOption>
+                  <IonSelectOption value={Pronouns.IdRatherNotSay}>{Pronouns.IdRatherNotSay}</IonSelectOption>
+                </IonSelect>
+              )}
+            />
             <IonButton
               className="ion-margin-top w-full mt-8"
               type="submit"
@@ -194,7 +207,7 @@ function Onboarding() {
           </form>
         </div>
       </IonContent>
-    </IonPage>
+    </IonPage >
   );
 }
 
