@@ -171,9 +171,9 @@ const SignUp: React.FC = () => {
               Join
             </IonButton>
             <Action
-              message="Have an account?"
+              message="Already have an account?"
               link="/signin"
-              text="Signin"
+              text="Sign In"
               align="center"
             />
           </form>
