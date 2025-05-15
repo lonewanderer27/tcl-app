@@ -32,8 +32,8 @@ import {
 } from "firebase/auth";
 
 import { Action } from "../components/Action";
-import useColorScheme from "@/hooks/useColorScheme";
 import { lockClosedOutline, mailOutline } from "ionicons/icons";
+import Logo2 from "@/assets/The Coffee Lounge - Logo 2.svg";
 
 enum GenderEnum {
   Female = "Female",
@@ -104,7 +104,6 @@ const SignUp: React.FC = () => {
       });
   };
 
-  const { colorScheme } = useColorScheme();
   console.log("isValid: ", isValid);
   console.log("errors: ", errors);
 
@@ -125,12 +124,8 @@ const SignUp: React.FC = () => {
             onSubmit={handleSubmit(onSubmit)}
           >
             <IonImg
-              src={
-                colorScheme === "dark"
-                  ? "/slogan_white_mode.png"
-                  : "/slogan_dark_mode.png"
-              }
-              className="w-[35%] mx-auto"
+              src={Logo2}
+              className="w-[35%] mx-auto tcl-logo"
             />
             <IonInput
               labelPlacement="fixed"
