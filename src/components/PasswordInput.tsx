@@ -84,10 +84,10 @@ function PasswordInput(props: IPasswordInputProps) {
       <IonModal isOpen={isOpen} onDidDismiss={handleDismiss} initialBreakpoint={0.4} breakpoints={[0, 0.4]}>
         <IonHeader>
           <IonToolbar>
-            <IonButton color="medium" fill="clear" slot="start" onClick={handleDismiss}>
+            <IonButton color="medium" fill="clear" slot="start" onClick={handleDismiss} tabIndex={0}>
               <IonIcon src={closeOutline} />
             </IonButton>
-            <IonButton slot="end" fill="clear" onClick={handleSubmit(handleConfirm, handleError)} strong>
+            <IonButton slot="end" fill="clear" onClick={handleSubmit(handleConfirm, handleError)} tabIndex={1} strong>
               Confirm
             </IonButton>
           </IonToolbar>
@@ -99,7 +99,7 @@ function PasswordInput(props: IPasswordInputProps) {
               control={control}
               render={({ field: { value, onChange, onBlur }, fieldState: { isTouched } }) => (
                 <IonInput
-                  tabIndex={0}
+                  tabIndex={2}
                   className={`${errors.pass && 'ion-invalid'} ${isTouched && 'ion-touched'}`}
                   fill="outline"
                   type="password"
@@ -117,7 +117,7 @@ function PasswordInput(props: IPasswordInputProps) {
               control={control}
               render={({ field: { value, onChange, onBlur }, fieldState: { isTouched } }) => (
                 <IonInput
-                  tabIndex={1}
+                  tabIndex={3}
                   className={`${errors.confirmPass && 'ion-invalid'} ${isTouched && 'ion-touched'}`}
                   fill="outline"
                   type="password"
