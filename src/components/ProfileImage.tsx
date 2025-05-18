@@ -5,6 +5,7 @@ import AnimatedImg from "./AnimatedImg";
 import { SystemAvatars } from "../constants";
 import { User } from "firebase/auth";
 import { cameraOutline } from "ionicons/icons";
+import { Gender } from "@/enums";
 
 const EditProfileImage = lazy(() => import("./ProfileImage/EditProfileImage"));
 export const DefaultProfileImg = (
@@ -14,7 +15,7 @@ export const DefaultProfileImg = (
   console.log("photoURL", photoURL);
   // the photoURL is not yet defined, so new user
   if (photoURL == undefined || photoURL == null) {
-    if (gender === "Female") {
+    if (gender === Gender.Female) {
       return SystemAvatars[3];
     } else {
       return SystemAvatars[1];

@@ -44,3 +44,17 @@ export enum Ice {
   Normal = "Normal",
   Extra = "Extra",
 }
+
+export enum Gender {
+  Male = "Male",
+  Female = "Female",
+  NonBinary = "Non Binary",
+  IdRatherNotSay = "I'd rather not say"
+}
+
+export enum Pronouns {
+  HeHim = "He / Him",
+  SheHer = "She / Her",
+  TheyThem = "They / Them",
+  IdRatherNotSay = "I'd rather not say"
+}
