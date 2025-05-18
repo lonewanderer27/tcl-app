@@ -79,13 +79,14 @@ function PasswordInput(props: IPasswordInputProps) {
           </IonToolbar>
         </IonHeader>
         <IonContent className="ion-padding">
-          <Controller
+          <div className="flex flex-col gap-y-5">
+            <Controller
             name="pass"
             control={control}
             render={({ field: { value, onChange, onBlur }, fieldState: { isTouched } }) => (
               <IonInput
                 tabIndex={0}
-                className={`mt-2 ${errors.pass && 'ion-invalid'} ${isTouched && 'ion-touched'}`}
+                className={`${errors.pass && 'ion-invalid'} ${isTouched && 'ion-touched'}`}
                 fill="outline"
                 type="password"
                 labelPlacement="floating"
@@ -103,7 +104,7 @@ function PasswordInput(props: IPasswordInputProps) {
             render={({ field: { value, onChange, onBlur }, fieldState: { isTouched } }) => (
               <IonInput
                 tabIndex={1}
-                className={`mt-5 ${errors.confirmPass && 'ion-invalid'} ${isTouched && 'ion-touched'}`}
+                className={`${errors.confirmPass && 'ion-invalid'} ${isTouched && 'ion-touched'}`}
                 fill="outline"
                 type="password"
                 labelPlacement="floating"
@@ -118,6 +119,7 @@ function PasswordInput(props: IPasswordInputProps) {
               />
             )}
           />
+          </div>
         </IonContent>
       </IonModal>
     </>
