@@ -1,0 +1,127 @@
+import { yupResolver } from "@hookform/resolvers/yup";
+import { IonButton, IonContent, IonHeader, IonIcon, IonInput, IonModal, IonToolbar } from "@ionic/react";
+import { closeOutline } from "ionicons/icons";
+import { ComponentProps, useState } from "react";
+import { Controller, FieldErrors, useForm } from "react-hook-form";
+import { object, string } from "yup";
+
+type IonInputProps = ComponentProps<typeof IonInput>;
+
+interface IPasswordInputProps extends IonInputProps {
+  inputValue?: string;
+  onInputChange?: (value: string) => void;
+}
+
+interface IPasswordInputForm {
+  pass: string;
+  confirmPass: string;
+}
+
+const VSPasswordInputField = object().shape({
+  pass: string()
+    .required('Password is required')
+    .min(8, 'Password must be at least 8 characters')
+    .matches(/[a-z]/, 'Password must contain at least one lowercase letter')
+    .matches(/[A-Z]/, 'Password must contain at least one uppercase letter')
+    .matches(/\d/, 'Password must contain at least one number')
+    .matches(/[@$!%*?&#]/, 'Password must contain at least one special character'),
+  confirmPass: string()
+    .required('Please confirm your password')
+    .test(
+      'match',
+      'Passwords do not match',
+      function () {
+        return this.parent.pass === this.parent.confirmPass
+      }
+    )
+});
+
+function PasswordInput(props: IPasswordInputProps) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const { control, handleSubmit, watch, formState: { errors } } = useForm<IPasswordInputForm>({
+    resolver: yupResolver(VSPasswordInputField),
+    defaultValues: {
+      'pass': props.inputValue
+    }
+  });
+
+  const handleTap = () => setIsOpen(true);
+
+  const handleDismiss = () => setIsOpen(false);
+
+  const handleConfirm = (data: IPasswordInputForm) => {
+    handleDismiss();
+    if (props.onInputChange) props.onInputChange(data.pass);
+  }
+
+  const handleError = (errors: FieldErrors<IPasswordInputForm>) => {
+    console.log("error: ", errors)
+  }
+
+  return (
+    <>
+      <IonInput
+        onClick={handleTap}
+        value={props.value ?? watch('confirmPass')}
+        readonly
+        {...props}
+      />
+      <IonModal isOpen={isOpen} onDidDismiss={handleDismiss} initialBreakpoint={0.4} breakpoints={[0, 0.4]}>
+        <IonHeader>
+          <IonToolbar>
+            <IonButton color="medium" fill="clear" slot="start" onClick={handleDismiss}>
+              <IonIcon src={closeOutline} />
+            </IonButton>
+            <IonButton slot="end" fill="clear" onClick={handleSubmit(handleConfirm, handleError)} strong>
+              Confirm
+            </IonButton>
+          </IonToolbar>
+        </IonHeader>
+        <IonContent className="ion-padding">
+          <Controller
+            name="pass"
+            control={control}
+            render={({ field: { value, onChange, onBlur }, fieldState: { isTouched } }) => (
+              <IonInput
+                tabIndex={0}
+                className={`mt-2 ${errors.pass && 'ion-invalid'} ${isTouched && 'ion-touched'}`}
+                fill="outline"
+                type="password"
+                labelPlacement="floating"
+                label="Password"
+                errorText={errors.pass?.message}
+                value={value}
+                onIonChange={e => onChange(e)}
+                onIonBlur={() => onBlur()}
+              />
+            )}
+          />
+          <Controller
+            name="confirmPass"
+            control={control}
+            render={({ field: { value, onChange, onBlur }, fieldState: { isTouched } }) => (
+              <IonInput
+                tabIndex={1}
+                className={`mt-5 ${errors.confirmPass && 'ion-invalid'} ${isTouched && 'ion-touched'}`}
+                fill="outline"
+                type="password"
+                labelPlacement="floating"
+                label="Repeat Password"
+                errorText={errors.confirmPass?.message}
+                value={value}
+                onIonChange={e => onChange(e)}
+                onIonBlur={() => onBlur()}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') handleSubmit(handleConfirm, handleError)
+                }}
+              />
+            )}
+          />
+        </IonContent>
+      </IonModal>
+    </>
+  )
+}
+
+export default PasswordInput;

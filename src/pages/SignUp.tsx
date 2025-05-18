@@ -35,6 +35,7 @@ import {
 import { Action } from "../components/Action";
 import { lockClosedOutline, mailOutline } from "ionicons/icons";
 import Logo2 from "@/assets/The Coffee Lounge - Logo 2.svg";
+import PasswordInput from "@/components/PasswordInput";
 
 const VSFormField = object().shape({
   email: string().email().required("Your email is required"),
@@ -154,20 +155,17 @@ const SignUp: React.FC = () => {
               name="password"
               control={control}
               render={({ field }) => (
-                <IonInput
+                <PasswordInput
                   className="mt-2"
                   fill="outline"
                   labelPlacement="fixed"
                   type="password"
-                  onIonChange={(e) => field.onChange(e)}
-                  onIonBlur={() => field.onBlur()}
-                  {...register("password", { required: true })}
+                  onInputChange={(e) => field.onChange(e)}
                 >
                   <IonIcon slot="start" className="text-2xl" src={lockClosedOutline} />
-                </IonInput>
+                </PasswordInput>
               )}
             />
-
             <p className="ion-text-center mt-8">
               By tapping "Join" you agree to our{" "}
               <IonRouterLink>Terms of Use</IonRouterLink> and{" "}
