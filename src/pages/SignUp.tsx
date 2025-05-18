@@ -158,9 +158,9 @@ const SignUp: React.FC = () => {
                 <PasswordInput
                   className="mt-2"
                   fill="outline"
-                  labelPlacement="fixed"
-                  type="password"
+                  placeholder="Tap to set password"
                   onInputChange={(e) => field.onChange(e)}
+                  showTogglePass
                 >
                   <IonIcon slot="start" className="text-2xl" src={lockClosedOutline} />
                 </PasswordInput>
