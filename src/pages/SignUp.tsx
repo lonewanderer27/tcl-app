@@ -140,7 +140,7 @@ const SignUp: React.FC = () => {
               render={({ field }) => (
                 <IonInput
                   {...field}
-                  labelPlacement="fixed"
+                  placeholder="Enter email"
                   className="ion-margin-top"
                   fill="outline"
                   type="email"
