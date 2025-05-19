@@ -88,7 +88,7 @@ function PasswordInput(props: IPasswordInputProps) {
             Show Password
           </IonCheckbox>
         </div>}
-      <IonModal isOpen={isOpen} onDidDismiss={handleDismiss} initialBreakpoint={0.4} breakpoints={[0, 0.4]}>
+      <IonModal isOpen={isOpen} onDidDismiss={handleDismiss} initialBreakpoint={0.8} breakpoints={[0, 0.8]}>
         <IonHeader>
           <IonToolbar>
             <IonButton color="medium" fill="clear" slot="start" onClick={handleDismiss} tabIndex={0}>
