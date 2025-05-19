@@ -11,6 +11,7 @@ interface IPasswordInputProps extends IonInputProps {
   inputValue?: string;
   onInputChange?: (value: string) => void;
   showTogglePass?: boolean;
+  showModalTogglePass?: boolean;
 }
 
 interface IPasswordInputForm {
@@ -40,6 +41,7 @@ const VSPasswordInputField = object().shape({
 function PasswordInput(props: IPasswordInputProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [showPass, setShowPass] = useState(false);
+  const [showInnerPass, setShowInnerPass] = useState(false);
 
   const { control, handleSubmit, watch, formState: { errors } } = useForm<IPasswordInputForm>({
     resolver: yupResolver(VSPasswordInputField),
@@ -64,7 +66,12 @@ function PasswordInput(props: IPasswordInputProps) {
   const toggleShowPass = (value: boolean) => {
     console.log(`[PasswordInput]: Toggled show password: ${value}`)
     setShowPass(value)
-  } 
+  }
+
+  const toggleShowInnerPass = (value: boolean) => {
+    console.log(`[PasswordInput]: Toggled show inner passwords: ${value}`)
+    setShowInnerPass(value)
+  }
 
   return (
     <>
@@ -77,7 +84,7 @@ function PasswordInput(props: IPasswordInputProps) {
       />
       {props.showTogglePass &&
         <div className="flex justify-end mt-2">
-          <IonCheckbox labelPlacement="end" value={showPass} onIonChange={(e) => toggleShowPass(e.target.checked)}>
+          <IonCheckbox labelPlacement="end" checked={showPass} onIonChange={(e) => toggleShowPass(e.target.checked)}>
             Show Password
           </IonCheckbox>
         </div>}
@@ -102,7 +109,7 @@ function PasswordInput(props: IPasswordInputProps) {
                   tabIndex={2}
                   className={`${errors.pass && 'ion-invalid'} ${isTouched && 'ion-touched'}`}
                   fill="outline"
-                  type="password"
+                  type={showInnerPass ? 'text' : 'password'}
                   labelPlacement="floating"
                   label="Password"
                   errorText={errors.pass?.message}
@@ -120,7 +127,7 @@ function PasswordInput(props: IPasswordInputProps) {
                   tabIndex={3}
                   className={`${errors.confirmPass && 'ion-invalid'} ${isTouched && 'ion-touched'}`}
                   fill="outline"
-                  type="password"
+                  type={showInnerPass ? 'text' : 'password'}
                   labelPlacement="floating"
                   label="Repeat Password"
                   errorText={errors.confirmPass?.message}
@@ -133,6 +140,12 @@ function PasswordInput(props: IPasswordInputProps) {
                 />
               )}
             />
+            {props.showModalTogglePass &&
+              <div className="flex justify-end">
+                <IonCheckbox labelPlacement="end" checked={showInnerPass} onIonChange={(e) => toggleShowInnerPass(e.target.checked)}>
+                  Show Passwords
+                </IonCheckbox>
+              </div>}
           </div>
         </IonContent>
       </IonModal>
