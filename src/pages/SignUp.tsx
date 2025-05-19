@@ -13,6 +13,7 @@ import {
   IonButtons,
   IonContent,
   IonHeader,
+  IonIcon,
   IonImg,
   IonInput,
   IonPage,
@@ -23,32 +24,33 @@ import {
   useIonRouter,
   useIonToast,
 } from "@ionic/react";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { object, string } from "yup";
+import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import {
   createUserWithEmailAndPassword,
   getAuth,
-  updateProfile,
 } from "firebase/auth";
 
 import { Action } from "../components/Action";
-import useColorScheme from "@/hooks/useColorScheme";
+import { lockClosedOutline, mailOutline } from "ionicons/icons";
+import Logo2 from "@/assets/The Coffee Lounge - Logo 2.svg";
+import PasswordInput from "@/components/PasswordInput";
 
-enum GenderEnum {
-  Female = "Female",
-  Male = "Male",
-  NonBinary = "Non-Binary",
-}
+const VSFormField = object().shape({
+  email: string().email().required("Your email is required"),
+  password: string().matches(
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
+    "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
+  ).required("A password must be given")
+});
 
 interface IFormInput {
   email: string;
   password: string;
-  gender?: GenderEnum;
-  pronouns?: string;
-  nickname: string;
-  updatedAt?: FieldValue;
 }
 
-const Register: React.FC = () => {
+const SignUp: React.FC = () => {
   const router = useIonRouter();
   const db = getFirestore();
   const auth = getAuth();
@@ -56,8 +58,10 @@ const Register: React.FC = () => {
   const {
     register,
     handleSubmit,
+    getValues,
+    control,
     formState: { errors, isValid },
-  } = useForm<IFormInput>();
+  } = useForm<IFormInput>({ resolver: yupResolver(VSFormField) });
 
   const [presentToast] = useIonToast();
   const [presentLoading, dismiss] = useIonLoading();
@@ -77,13 +81,6 @@ const Register: React.FC = () => {
         dismiss(); // dismiss the original loading
         const user = userCredential.user;
         console.log(user);
-
-        // update firebase user profile
-        (async () => {
-          await updateProfile(auth.currentUser!, {
-            displayName: data.nickname,
-          });
-        })();
 
         // construct the user data
         const userData: {
@@ -113,13 +110,15 @@ const Register: React.FC = () => {
       });
   };
 
-  const { colorScheme } = useColorScheme();
+  console.log("isValid: ", isValid);
+  console.log("errors: ", errors);
+  console.log("values", getValues());
 
   return (
     <IonPage>
       <IonHeader translucent={true}>
         <IonToolbar>
-          <IonTitle>Register</IonTitle>
+          <IonTitle>Sign Up</IonTitle>
           <IonButtons slot="start">
             <IonBackButton></IonBackButton>
           </IonButtons>
@@ -132,32 +131,44 @@ const Register: React.FC = () => {
             onSubmit={handleSubmit(onSubmit)}
           >
             <IonImg
-              src={
-                colorScheme === "dark"
-                  ? "/slogan_white_mode.png"
-                  : "/slogan_dark_mode.png"
-              }
-              className="w-[35%] mx-auto"
+              src={Logo2}
+              className="w-[35%] mx-auto tcl-logo"
             />
-            <IonInput
-              label="Email"
-              labelPlacement="fixed"
-              className="ion-margin-top"
-              fill="outline"
-              type="text"
-              {...register("email", { required: true })}
+            <Controller
+              name="email"
+              control={control}
+              render={({ field }) => (
+                <IonInput
+                  {...field}
+                  placeholder="Enter email"
+                  className="ion-margin-top"
+                  fill="outline"
+                  type="email"
+                  onIonChange={(e) => field.onChange(e)}
+                  onIonBlur={() => field.onBlur()}
+                >
+                  <IonIcon slot="label" className="text-2xl" src={mailOutline} />
+                </IonInput>
+              )}
             />
-            <IonInput
-              className="mt-2 "
-              fill="outline"
-              label="Password"
-              labelPlacement="fixed"
-              type="password"
-              {...register("password", { required: true })}
+            <Controller
+              name="password"
+              control={control}
+              render={({ field }) => (
+                <PasswordInput
+                  className="mt-2"
+                  fill="outline"
+                  placeholder="Tap to set password"
+                  onInputChange={(e) => field.onChange(e)}
+                  showTogglePass
+                  showModalTogglePass
+                >
+                  <IonIcon slot="start" className="text-2xl" src={lockClosedOutline} />
+                </PasswordInput>
+              )}
             />
-            
             <p className="ion-text-center mt-8">
-              By tapping "Create Account" you agree to our{" "}
+              By tapping "Join" you agree to our{" "}
               <IonRouterLink>Terms of Use</IonRouterLink> and{" "}
               <IonRouterLink>Privacy Policy</IonRouterLink>
             </p>
@@ -168,12 +179,12 @@ const Register: React.FC = () => {
               disabled={!isValid}
               className="ion-margin-top"
             >
-              Create Account
+              Join
             </IonButton>
             <Action
-              message="Have an account?"
+              message="Already have an account?"
               link="/signin"
-              text="Signin"
+              text="Sign In"
               align="center"
             />
           </form>
@@ -183,4 +194,4 @@ const Register: React.FC = () => {
   );
 };
 
-export default Register;
+export default SignUp;
